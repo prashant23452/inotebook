@@ -11,6 +11,13 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+// app.get('/api/v1/login', (req, res) => {
+//   res.send('Hello Login!')
+// })
+// app.get('/api/v1/signup', (req, res) => {
+//   res.send('Hello Sign up!')
+// })
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
