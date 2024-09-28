@@ -8,6 +8,7 @@ const AddNote = () => {
   const handleClick = (e)=>{
       e.preventDefault();
       addNote(note.title,note.description, note.tag);
+      setNote({title : "",description : "", tag:""})
   }
   const onChange = (e) => {
       setNote({...note,[e.target.name] : e.target.value})
@@ -20,21 +21,23 @@ const AddNote = () => {
         <h1>Add a Note</h1>
         <form>
           <div className="mb-3">
-            <label htmlfor="Title" className="form-label">
+            <label htmlFor="title" className="form-label">
               Title
             </label>
             <input
               type="text"
               className="form-control"
               id="title"
+              value={note.title}
               name="title"
               aria-describedby="emailHelp"
               onChange={onChange}
+              minLength={5} required
             />
             
           </div>
           <div className="mb-3">
-            <label htmlfor="description" className="form-label">
+            <label htmlFor="description" className="form-label">
               Description
             </label>
             <input
@@ -42,20 +45,26 @@ const AddNote = () => {
               className="form-control"
               name="description"
               id="description"
+              value={note.description}
               onChange={onChange}
+              minLength={5} required
             />
           </div>
-          <div className="mb-3 form-check">
-            <input
-              type="checkbox"
-              className="form-check-input"
-              id="exampleCheck1"
-            />
-            <label className="form-check-label" htmlfor="exampleCheck1">
-              Check me out
+          <div className="mb-3">
+            <label htmlFor="tag" className="form-label">
+            Tag
             </label>
+            <input
+              type="text"
+              value={note.tag}
+              className="form-control"
+              name="tag"
+              id="tag"
+              onChange={onChange}
+              minLength={5} required
+            />
           </div>
-          <button type="submit" onClick={handleClick}className="btn btn-primary">
+          <button disabled={note.title.length< 5 || note.description.length < 5 || note.tag.length< 5}type="submit" onClick={handleClick}className="btn btn-primary">
             Add Note
           </button>
         </form>
