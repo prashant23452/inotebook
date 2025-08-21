@@ -1,4 +1,5 @@
-
+require('dotenv').config();
+const mongoose = require('mongoose');
 
 
 // async function connectToMongo() {
@@ -12,8 +13,8 @@
 //     console.error('Error connecting to the database:', error);
 //   }
 // }
-require('dotenv').config();
-const mongoose = require('mongoose');
+// require('dotenv').config();
+// const mongoose = require('mongoose');
 
 const connectToMongo = () => {
   mongoose.connect(process.env.URI)
